@@ -1,0 +1,110 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f8;
+  color: #333;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+/* Cabeçalho */
+header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #0077b6;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+header img {
+  height: 48px;
+  width: 48px;
+}
+
+h1 {
+  font-size: 1.8rem;
+}
+
+/* Seções e Formulário */
+section {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #0077b6;
+}
+
+/* Campos do Formulário */
+.form-row {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+/* Botão de Enviar */
+button[type="submit"] {
+  background-color: #0077b6;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #005f87;
+}
+
+/* Esconder seções */
+.hidden {
+  display: none;
+}
+
+/* Grupos */
+.radio-group {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.subgroup {
+  margin-top: 10px;
+  padding-left: 20px;
+  border-left: 3px solid #0077b6;
+}

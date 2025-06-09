@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Formulário de Avaliação Hospitalar</title>
+  <link rel="stylesheet" href="Style2.css" />
+</head>
+<body>
+
+<h1>Formulário de Avaliação Hospitalar</h1>
+
+<form id="formulario">
+
+  <!-- 1. Dependente -->
+  <fieldset>
+    <legend>1. Paciente é dependente?</legend>
+    <label><input type="radio" name="dependente" value="sim" onclick="toggleSection('grauDependencia', true)"> Sim</label>
+    <label><input type="radio" name="dependente" value="nao" onclick="toggleSection('grauDependencia', false)"> Não</label>
+    <div id="grauDependencia" class="hidden">
+      <label>Grau de dependência: <input type="text" name="grau_dependencia" /></label>
+    </div>
+  </fieldset>
+
+  <!-- 2. Acamado -->
+  <fieldset>
+    <legend>2. Paciente está acamado?</legend>
+    <label><input type="radio" name="acamado" value="sim" onclick="toggleSection('tempoAcamado', true)"> Sim</label>
+    <label><input type="radio" name="acamado" value="nao" onclick="toggleSection('tempoAcamado', false)"> Não</label>
+    <div id="tempoAcamado" class="hidden">
+      <label>Quanto tempo? <input type="text" name="tempo_acamado" /></label>
+    </div>
+  </fieldset>
+
+  <!-- 3. Deambulação -->
+  <fieldset>
+    <legend>3. Possui deambulação prévia?</legend>
+    <label><input type="radio" name="deambulacao" value="sim" onclick="toggleSection('tipoDeambulacao', true)"> Sim</label>
+    <label><input type="radio" name="deambulacao" value="nao" onclick="toggleSection('tipoDeambulacao', false)"> Não</label>
+    <div id="tipoDeambulacao" class="hidden">
+      <label><input type="radio" name="tipo_deambulacao" value="sem_auxilio"> Sem auxílio</label>
+      <label><input type="radio" name="tipo_deambulacao" value="com_auxilio"> Com auxílio</label>
+    </div>
+  </fieldset>
+
+  <!-- 4. SAD -->
+  <fieldset>
+    <legend>4. Necessita de SAD?</legend>
+    <label><input type="radio" name="sad" value="sim" onclick="toggleSection('sadCampos', true)"> Sim</label>
+    <label><input type="radio" name="sad" value="nao" onclick="toggleSection('sadCampos', false)"> Não</label>
+    <div id="sadCampos" class="hidden">
+      <label><input type="checkbox" name="sad_solicitado"> Já solicitado</label>
+      <label><input type="checkbox" name="sad_resolvido"> Já resolvido</label>
+    </div>
+  </fieldset>
+
+  <!-- 5. Interconsulta -->
+  <fieldset>
+    <legend>5. Necessita de Interconsulta?</legend>
+    <label><input type="radio" name="interconsulta" value="sim" onclick="toggleSection('interconsultaCampos', true)"> Sim</label>
+    <label><input type="radio" name="interconsulta" value="nao" onclick="toggleSection('interconsultaCampos', false)"> Não</label>
+    <div id="interconsultaCampos" class="hidden">
+      <label>Especialidade: <input type="text" name="especialidade_interconsulta" /></label>
+      <label><input type="checkbox" name="interconsulta_solicitado" /> Já foi solicitado?</label>
+    </div>
+  </fieldset>
+
+  <!-- 6. Encaminhamento -->
+  <fieldset>
+    <legend>6. Necessita Encaminhamento?</legend>
+    <label><input type="radio" name="encaminhamento" value="sim" onclick="toggleSection('encaminhamentoCampos', true)"> Sim</label>
+    <label><input type="radio" name="encaminhamento" value="nao" onclick="toggleSection('encaminhamentoCampos', false)"> Não</label>
+    <div id="encaminhamentoCampos" class="hidden">
+      <label>Especialidade:
+        <select name="especialidade_encaminhamento">
+          <option value="">Selecione</option>
+          <option>Cardiologia</option>
+          <option>Neurologia</option>
+          <option>Ortopedia</option>
+        </select>
+      </label>
+      <label><input type="checkbox" name="documentacao_encaminhamento" /> Documentação já realizada?</label>
+    </div>
+  </fieldset>
+
+  <!-- 7. AVP -->
+  <fieldset>
+    <legend>7. AVP?</legend>
+    <label><input type="radio" name="avp" value="sim" onclick="toggleSection('avpCampos', true)"> Sim</label>
+    <label><input type="radio" name="avp" value="nao" onclick="toggleSection('avpCampos', false)"> Não</label>
+    <div id="avpCampos" class="hidden">
+      <label>Dificuldade:
+        <select name="dificuldade_avp" onchange="togglePICC(this)">
+          <option value="">Selecione</option>
+          <option value="facil">Fácil</option>
+          <option value="medio">Médio</option>
+          <option value="dificil">Difícil</option>
+        </select>
+      </label>
+      <div id="piccCampos" class="hidden">
+        <label>Solicitado PICC?</label>
+        <label><input type="radio" name="picc" value="sim"> Sim</label>
+        <label><input type="radio" name="picc" value="nao"> Não</label>
+      </div>
+    </div>
+  </fieldset>
+
+  <!-- 8. Lesão por Pressão -->
+  <fieldset>
+    <legend>8. Lesão por Pressão?</legend>
+    <label><input type="radio" name="lesao" value="sim" onclick="toggleSection('lesaoCampos', true)"> Sim</label>
+    <label><input type="radio" name="lesao" value="nao" onclick="toggleSection('lesaoCampos', false)"> Não</label>
+    <div id="lesaoCampos" class="hidden">
+      <label>Local: <input type="text" name="local_lesao" /></label>
+      <label>Grau: <input type="text" name="grau_lesao" /></label>
+    </div>
+  </fieldset>
+
+  <!-- 9. Suporte Familiar -->
+  <fieldset>
+    <legend>9. Suporte Familiar?</legend>
+    <label><input type="radio" name="suporte_familiar" value="sim" onclick="toggleSection('suporteFamiliarCampos', true)"> Sim</label>
+    <label><input type="radio" name="suporte_familiar" value="nao" onclick="toggleSection('suporteFamiliarCampos', false)"> Não</label>
+    <div id="suporteFamiliarCampos" class="hidden">
+      <label>Quem? <input type="text" name="quem_suporte" /></label>
+      <label>Quantas pessoas? <input type="number" name="quantidade_suporte" /></label>
+    </div>
+  </fieldset>
+
+  <!-- 10. Residência -->
+  <fieldset>
+    <legend>10. Possui residência?</legend>
+    <label><input type="radio" name="residencia" value="sim" onclick="toggleSection('tipoResidencia', true)"> Sim</label>
+    <label><input type="radio" name="residencia" value="nao" onclick="toggleSection('tipoResidencia', false)"> Não</label>
+    <div id="tipoResidencia" class="hidden">
+      <label>Tipo:
+        <select name="tipo_residencia">
+          <option>Casa própria</option>
+          <option>Ambiente familiar</option>
+          <option>Casa de repouso</option>
+          <option>Ambiente comunitário</option>
+        </select>
+      </label>
+    </div>
+  </fieldset>
+
+  <!-- 11. Benefício do governo -->
+  <fieldset>
+    <legend>11. Recebe benefício do governo?</legend>
+    <label><input type="radio" name="beneficio" value="sim" onclick="toggleSection('qualBeneficio', true)"> Sim</label>
+    <label><input type="radio" name="beneficio" value="nao" onclick="toggleSection('qualBeneficio', false)"> Não</label>
+    <div id="qualBeneficio" class="hidden">
+      <label>Qual? <input type="text" name="qual_beneficio" /></label>
+    </div>
+  </fieldset>
+
+  <!-- 12. Vínculo com a rede de saúde -->
+  <fieldset>
+    <legend>12. Possui vínculo com a rede de saúde?</legend>
+    <label>Selecione:
+      <select name="vinculo_saude">
+        <option>UBS</option>
+        <option>CAPS</option>
+        <option>CRAS</option>
+        <option>SAD</option>
+        <option>Outros</option>
+      </select>
+    </label>
+  </fieldset>
+
+  <!-- 13. Cuidados respiratórios -->
+  <fieldset>
+    <legend>13. Cuidados respiratórios avançados?</legend>
+    <label><input type="radio" name="respiratorio" value="sim" onclick="toggleSection('cuidadosRespiratoriosCampos', true)"> Sim</label>
+    <label><input type="radio" name="respiratorio" value="nao" onclick="toggleSection('cuidadosRespiratoriosCampos', false)"> Não</label>
+    <div id="cuidadosRespiratoriosCampos" class="hidden">
+      <label><input type="checkbox" name="respiratorio_solicitado"> Já solicitado</label>
+      <label><input type="checkbox" name="respiratorio_em_maos"> Está em mãos?</label>
+    </div>
+  </fieldset>
+
+  <!-- 14. Suporte nutricional -->
+  <fieldset>
+    <legend>14. Suporte nutricional adequado?</legend>
+    <label><input type="radio" name="nutricional" value="sim"> Sim</label>
+    <label><input type="radio" name="nutricional" value="nao"> Não</label>
+    <label><input type="checkbox" name="nutricional_avaliado"> Avaliado?</label>
+  </fieldset>
+
+  <!-- 15. Acompanhamento psicológico -->
+  <fieldset>
+    <legend>15. Acompanhamento psicológico prévio?</legend>
+    <label><input type="radio" name="psicologico" value="sim" onclick="toggleSection('tempoPsicologico', true)"> Sim</label>
+    <label><input type="radio" name="psicologico" value="nao" onclick="toggleSection('tempoPsicologico', false)"> Não</label>
+    <div id="tempoPsicologico" class="hidden">
+      <label>Tempo de acompanhamento: <input type="text" name="tempo_psicologico" /></label>
+    </div>
+  </fieldset>
+
+  <button type="submit">Enviar</button>
+</form>
+
+<script src="script2.js"></script>
+</body>
+</html>
